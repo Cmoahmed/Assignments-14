@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="690" viewBox="0 0 1120 690" role="img" aria-labelledby="title desc">
+  <title id="title">Part B - Question 1: UML Class Diagram</title>
+  <desc id="desc">Class diagram for User, Admin, Note, NoteBook, and generic Storage, with inheritance, composition, aggregation, and authorship association.</desc>
+  <defs>
+    <style>
+      text{font-family:Arial,sans-serif;fill:#172033;font-size:14px}.heading{font-weight:bold;font-size:17px}.line{stroke:#334155;stroke-width:2;fill:none}.classbox{fill:#fff;stroke:#334155;stroke-width:2}.divider{stroke:#94a3b8;stroke-width:1}
+    </style>
+    <marker id="triangle" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M1 1 L10 6 L1 11 Z" fill="#fff" stroke="#334155" stroke-width="1.5"/></marker>
+  </defs>
+  <rect width="1120" height="690" fill="#f8fafc"/>
+  <text x="560" y="34" text-anchor="middle" class="heading">Part B - Question 1: UML Class Diagram</text>
+  <!-- User box -->
+  <rect class="classbox" x="40" y="90" width="330" height="300" rx="5"/>
+  <text class="heading" x="205" y="118" text-anchor="middle">User</text><line class="divider" x1="40" y1="130" x2="370" y2="130"/>
+  <text x="55" y="154">+ readonly id: number</text><text x="55" y="176">+ name: string</text><text x="55" y="198">+ email: string</text><text x="55" y="220">- password: string</text><text x="55" y="242"># phone: string</text><text x="55" y="264">- _age: number; + age: number</text><text x="55" y="286">- notebooks: NoteBook[]</text>
+  <line class="divider" x1="40" y1="302" x2="370" y2="302"/><text x="55" y="326">+ displayInfo(): void</text><text x="55" y="348">+ addNotebook(notebook): void</text><text x="55" y="370">+ removeNotebook(notebook): boolean</text><text x="55" y="388">+ getNotebooks(): readonly NoteBook[]</text>
+  <!-- Admin box -->
+  <rect class="classbox" x="40" y="490" width="330" height="105" rx="5"/><text class="heading" x="205" y="518" text-anchor="middle">Admin</text><line class="divider" x1="40" y1="530" x2="370" y2="530"/><text x="55" y="556">+ manageNotes(notebook, note, action): boolean</text>
+  <path class="line" d="M205 490 L205 402" marker-end="url(#triangle)"/><text x="216" y="448">Inheritance</text>
+  <!-- Note box -->
+  <rect class="classbox" x="510" y="90" width="300" height="245" rx="5"/><text class="heading" x="660" y="118" text-anchor="middle">Note</text><line class="divider" x1="510" y1="130" x2="810" y2="130"/><text x="525" y="156">+ readonly id: number</text><text x="525" y="178">+ title: string</text><text x="525" y="200">+ content: string</text><text x="525" y="222">+ readonly userId: User</text><line class="divider" x1="510" y1="240" x2="810" y2="240"/><text x="525" y="267">+ getAuthor(): User</text><text x="525" y="289">+ preview(maxLength?): string</text>
+  <!-- NoteBook box -->
+  <rect class="classbox" x="850" y="390" width="240" height="190" rx="5"/><text class="heading" x="970" y="418" text-anchor="middle">NoteBook</text><line class="divider" x1="850" y1="430" x2="1090" y2="430"/><text x="865" y="456">- notes: Note[]</text><line class="divider" x1="850" y1="470" x2="1090" y2="470"/><text x="865" y="496">+ addNote(note): void</text><text x="865" y="518">+ removeNote(id): boolean</text><text x="865" y="540">+ getNotes(): readonly Note[]</text>
+  <!-- Generic box -->
+  <rect class="classbox" x="510" y="440" width="300" height="160" rx="5"/><text class="heading" x="660" y="468" text-anchor="middle">Storage&lt;T&gt;</text><line class="divider" x1="510" y1="480" x2="810" y2="480"/><text x="525" y="506">- items: T[]</text><line class="divider" x1="510" y1="522" x2="810" y2="522"/><text x="525" y="548">+ addItem(item: T): void</text><text x="525" y="570">+ removeItem(item: T): boolean</text><text x="525" y="592">+ getAllItems(): T[]</text>
+  <!-- Composition diamond sits at NoteBook end. -->
+  <path class="line" d="M810 210 C900 210 970 275 970 377"/><polygon points="970,377 982,389 970,401 958,389" fill="#334155"/><text x="824" y="199">0..*</text><text x="981" y="370">1</text><text x="875" y="278">Composition</text>
+  <!-- Aggregation hollow diamond sits at User end. -->
+  <path class="line" d="M370 330 C540 370 715 410 838 472"/><polygon points="838,472 850,484 838,496 826,484" fill="#f8fafc" stroke="#334155" stroke-width="2"/><text x="386" y="322">1</text><text x="855" y="500">0..*</text><text x="563" y="400">Aggregation</text>
+  <!-- Association: each Note has one author; one User may author many Notes. -->
+  <path class="line" d="M510 165 C465 130 420 130 370 165"/><text x="392" y="145">1</text><text x="485" y="145">0..*</text><text x="412" y="182">author association</text>
+  <polygon points="40,625 52,631 40,637" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/><text x="60" y="636">Hollow triangle: inheritance</text>
+  <polygon points="340,625 346,631 340,637 334,631" fill="#334155"/><text x="354" y="636">Filled diamond: composition</text>
+  <polygon points="640,625 646,631 640,637 634,631" fill="#f8fafc" stroke="#334155" stroke-width="1.5"/><text x="654" y="636">Hollow diamond: aggregation</text>
+</svg>

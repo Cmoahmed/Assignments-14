@@ -1,0 +1,43 @@
+%% Part B - Question 1: UML Class Diagram
+classDiagram
+    class User {
+        +readonly number id
+        +string name
+        +string email
+        -string password
+        #string phone
+        -number _age
+        +number age
+        -NoteBook[] notebooks
+        +displayInfo() void
+        +addNotebook(notebook: NoteBook) void
+        +removeNotebook(notebook: NoteBook) boolean
+        +getNotebooks() readonly NoteBook[]
+    }
+    class Admin {
+        +manageNotes(notebook: NoteBook, note: Note, action: string) boolean
+    }
+    class Note {
+        +readonly number id
+        +string title
+        +string content
+        +readonly User userId
+        +getAuthor() User
+        +preview(maxLength: number) string
+    }
+    class NoteBook {
+        -Note[] notes
+        +addNote(note: Note) void
+        +removeNote(noteId: number) boolean
+        +getNotes() readonly Note[]
+    }
+    class Storage~T~ {
+        -T[] items
+        +addItem(item: T) void
+        +removeItem(item: T) boolean
+        +getAllItems() T[]
+    }
+    User <|-- Admin : Inheritance
+    NoteBook "1" *-- "0..*" Note : Composition
+    User "1" o-- "0..*" NoteBook : Aggregation
+    User "1" <-- "0..*" Note : Association (author)
